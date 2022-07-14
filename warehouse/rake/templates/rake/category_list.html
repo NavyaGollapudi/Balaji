@@ -1,0 +1,74 @@
+{% extends 'rake/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block body_block %}
+
+{% comment %} Modal Form PlaceHolder for Creating Category {% endcomment %}
+<div class="modal fade" id="category-modal" tabindex="-1" aria-labelledby="category-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+     <div class="modal-content"></div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-4">
+        <button id="create-category" class="btn btn-primary btn-sm">Create</button>   
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-4">
+    </div>
+    <div class="col-4">   
+        <table class="table table-sm table-bordered">
+            <thead class="text-white" style="background-color:#2a9d8f;">
+            <tr>
+                <th scope="col">Sl No</th>
+                <th scope="col">Category Name</th>
+                <th scope="col" id="edit-category" class="text-center">Edit</th>
+                <th scope="col" class="text-center">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in category_list %}
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td class="text-center">
+                            <a class="bs-modal" data-form-url="{% url 'category_edit' item.pk %}"></a>
+                                <span style="color:#4285F4;" class="material-icons">edit</span>
+                        </td>
+                        <td class="text-center">
+                            <a class="bs-modal" data-form-url="{% url 'category_delete' item.pk %}"></a>
+                                <span class="material-icons text-danger">delete</span>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        $('#create-category').modalForm({
+        formURL: "{% url 'category_create' %}",
+        modalID: '#category-modal'
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".bs-modal").each(function () {
+            $(this).modalForm({
+                formURL: $(this).data('form-url'),
+                modalID: '#category-modal',
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}

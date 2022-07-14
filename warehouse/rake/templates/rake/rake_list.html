@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'rake/base.html' %}
+{% load widget_tweaks %}
+{% block body_block %}
+
+<div class="row mt-3">
+    <div class="col-1">
+    </div>
+    <div class="col-1">
+        <a href="{% url 'rake_create' %}" type="button" class="btn btn-primary btn-sm">Create</a>   
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-6>
+    </div>
+    <div class="col-6">   
+        <table class="table table-sm table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">RR Date</th>
+                <th scope="col">RR Number</th>
+                <th scope="col">Receiving Date</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Product Description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Bags Count</th>
+                <th scope="col">Receiving Branch</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in rake_list %}
+                    <tr>
+                        <td>{{item.rrdate}}</td>
+                        <td>{{item.rrnumber}}</td>
+                        <td>{{item.receivingdate}}</td>
+                        <td>{{item.customer_name}}</td>
+                        <td>{{item.category_name}}</td>
+                        <td>{{item.product_description}}</td>
+                        <td>{{item.quantity}</td>
+                        <td>{{item.bags_count}}</td>
+                        <td>{{item.receiving_branch}}</td>
+                        <td>
+                            <a href="{% url 'branch_edit' item.pk %}">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'branch_delete' item.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

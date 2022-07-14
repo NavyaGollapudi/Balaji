@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'rake/base.html' %}
+{% load widget_tweaks %}
+{% block body_block %}
+
+
+
+<form method="POST">
+    {% csrf_token %}
+    <h4>Are you sure you want to delete {{branch.name}}?</h4>
+    <input type="submit" class="btn btn-danger btn-sm" value="delete">
+    <a href="{% url 'branch_list' %}">Cancel</a>
+</form>
+
+
+
+
+{% endblock %}

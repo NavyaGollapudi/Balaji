@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% extends 'rake/base.html' %}
+{% load widget_tweaks %}
+{% block body_block %}
+
+<div class="row my-5">
+    <div class="col-4">
+        <div class="p-2 bordered rounded bg-secondary text-white">
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.rrdate.id_for_label}}" class="form-label">RR Date</label>
+                        {% render_field form.rrdate class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %} 
+            <div class="mb-3">
+                <label for="{{form.rrdate.id_for_label}}" class="form-label">RR Date</label>
+                {% render_field form.rrdate class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.address.errors %}
+                {% for error in form.address.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.rrnumber.id_for_label}}" class="form-label">RR Number</label>
+                        {% render_field form.rrnumber class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.rrnumber.id_for_label}}" class="form-label">RR Number</label>
+                {% render_field form.rrnumber class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.state.errors %}
+                {% for error in form.state.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.receivingdate.id_for_label}}" class="form-label">Receiving Date</label>
+                        {% render_field form.receivingdate class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.receivingdate.id_for_label}}" class="form-label">Receiving Date</label>
+                {% render_field form.receivingdate class+='form-control' %}
+            </div>
+            {% endif %}
+        
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.customer_name.id_for_label}}" class="form-label">Customer Name</label>
+                        {% render_field form.customer_name class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.customer_name.id_for_label}}" class="form-label">Customer Name</label>
+                {% render_field form.customer_name class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.category_name.id_for_label}}" class="form-label">Category Name</label>
+                        {% render_field form.category_name class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.category_name.id_for_label}}" class="form-label">Category Name</label>
+                {% render_field form.category_name class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.product_description.id_for_label}}" class="form-label">Product Description</label>
+                        {% render_field form.product_description class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.product_description.id_for_label}}" class="form-label">Product Description</label>
+                {% render_field form.product_description class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.quantity.id_for_label}}" class="form-label">Quantity</label>
+                        {% render_field form.quantity class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.quantity.id_for_label}}" class="form-label">Quantity</label>
+                {% render_field form.quantity class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.bags_count.id_for_label}}" class="form-label">Bags Count</label>
+                        {% render_field form.bags_count class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.bags_count.id_for_label}}" class="form-label">Bags Count</label>
+                {% render_field form.bags_count class+='form-control' %}
+            </div>
+            {% endif %}
+
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <div class="mb-3">
+                        <label for="{{form.receiving_branch.id_for_label}}" class="form-label">Receiving Branch</label>
+                        {% render_field form.receiving_branch class+='form-control is-invalid' %}
+                        <div class="invalid-feedback">
+                            <strong>{{error}}</strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="mb-3">
+                <label for="{{form.receiving_branch.id_for_label}}" class="form-label">Receiving Branch</label>
+                {% render_field form.receiving_branch class+='form-control' %}
+            </div>
+            {% endif %}
+            
+                <button type="submit" class="btn btn-primary btn-sm mb-2">Submit</button>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+</div>
+
+
+{% endblock %}
